@@ -5,7 +5,6 @@ function Bookdetails(props) {
   const bookid = props.history.location.pathname.slice(13);
 
   const [bookinfo, setBookinfo] = useState({});
-  const [isLoading, setisLoading] = useState(false);
   const [hasError, sethasError] = useState(false);
 
   useEffect(() => {
@@ -16,15 +15,14 @@ function Bookdetails(props) {
       })
       .catch(() => {
         sethasError(true);
-        setisLoading(false);
       });
   }, [bookid]);
 
-  // AddBooktoShelf = async (bookid, shelf) => {
-  //   await axios.get(
-  //     `http://localhost:7000/bookshelf/update/${bookid}/${shelf}`
-  //   );
-  // };
+  const AddBooktoShelf = async (bookid, shelf) => {
+    await axios.get(
+      `http://localhost:7000/bookshelf/update/${bookid}/${shelf}`
+    );
+  };
 
   return (
     <div>
@@ -45,6 +43,7 @@ function Bookdetails(props) {
       </button>
       <br />
       <br />
+      {hasError && <h2>Error Retrieving Data from Server!</h2>}
       {Object.keys(bookinfo).length > 0 && (
         <div className="card">
           {bookinfo.imageLinks && (
@@ -76,28 +75,28 @@ function Bookdetails(props) {
           <button
             type="button"
             className="btn btn-primary float-left"
-            onClick={() => this.AddBooktoShelf(bookid, "wantToRead")}
+            onClick={() => AddBooktoShelf(bookid, "wantToRead")}
           >
             Add to Want to Read
           </button>
           <button
             type="button"
             className="btn btn-primary float-middle"
-            onClick={() => this.AddBooktoShelf(bookid, "currentlyReading")}
+            onClick={() => AddBooktoShelf(bookid, "currentlyReading")}
           >
             Add to Currently Reading
           </button>
           <button
             type="button"
             className="btn btn-primary float-middle"
-            onClick={() => this.AddBooktoShelf(bookid, "read")}
+            onClick={() => AddBooktoShelf(bookid, "read")}
           >
             Add to Read
           </button>
           <button
             type="button"
             className="btn btn-primary float-right"
-            onClick={() => this.AddBooktoShelf(bookid, "none")}
+            onClick={() => AddBooktoShelf(bookid, "none")}
           >
             Delete from bookshelf
           </button>
