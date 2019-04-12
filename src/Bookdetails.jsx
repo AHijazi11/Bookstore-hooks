@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import StockImage from "./Images/No-image-available.jpg";
 
 function Bookdetails(props) {
   const bookid = props.history.location.pathname.slice(13);
@@ -39,19 +40,21 @@ function Bookdetails(props) {
         className="btn btn-primary float-left"
         onClick={() => props.history.push("/")}
       >
-        My Bookshelf
+        Bookshelf
       </button>
       <br />
       <br />
       {hasError && <h2>Error Retrieving Data from Server!</h2>}
       {Object.keys(bookinfo).length > 0 && (
         <div className="card">
-          {bookinfo.imageLinks && (
+          {bookinfo.imageLinks ? (
             <img
               className="card-img-top"
               src={bookinfo.imageLinks.thumbnail}
               alt=""
             />
+          ) : (
+            <img className="card-img-top" src={StockImage} alt="" />
           )}
           <div className="card-body">
             <h5 className="card-title">{bookinfo.title}</h5>

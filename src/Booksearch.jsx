@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import StockImage from "./Images/No-image-available.jpg";
 
 function Booksearch(props) {
   const [searchfield, setSearchfield] = useState("");
@@ -59,25 +60,32 @@ function Booksearch(props) {
         searchresults.length > 0 &&
         searchresults.map((book, idx) => {
           return (
-            <div className="card" key={idx}>
-              {book.imageLinks && (
-                <img
-                  className="card-img-top"
-                  src={book.imageLinks.thumbnail}
-                  alt=""
-                />
-              )}
-              <div className="card-body">
-                <h5 className="card-title">{book.title}</h5>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => props.history.push(`/Bookdetails/${book.id}`)}
-                >
-                  {" "}
-                  Book Details
-                </button>
+            <div>
+              <div className="card" key={idx}>
+                {book.imageLinks ? (
+                  <img
+                    className="card-img-top"
+                    src={book.imageLinks.thumbnail}
+                    alt=""
+                    onClick={() =>
+                      props.history.push(`/Bookdetails/${book.id}`)
+                    }
+                  />
+                ) : (
+                  <img
+                    className="card-img-top"
+                    src={StockImage}
+                    alt=""
+                    onClick={() =>
+                      props.history.push(`/Bookdetails/${book.id}`)
+                    }
+                  />
+                )}
+                <div className="card-body">
+                  <h5 className="card-title">{book.title}</h5>
+                </div>
               </div>
+              <br />
             </div>
           );
         })

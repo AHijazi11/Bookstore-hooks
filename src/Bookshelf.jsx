@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import StockImage from "./Images/No-image-available.jpg";
 
 function Bookshelf(props) {
   const [bookshelf, setBookshelf] = useState({});
@@ -40,11 +41,23 @@ function Bookshelf(props) {
           bookshelf.wantToRead.map((book, idx) => {
             return (
               <div className="card" key={idx}>
-                {book.imageLinks && (
+                {book.imageLinks ? (
                   <img
                     className="card-img-top"
                     src={book.imageLinks.thumbnail}
                     alt=""
+                    onClick={() =>
+                      props.history.push(`/Bookdetails/${book.id}`)
+                    }
+                  />
+                ) : (
+                  <img
+                    className="card-img-top"
+                    src={StockImage}
+                    alt=""
+                    onClick={() =>
+                      props.history.push(`/Bookdetails/${book.id}`)
+                    }
                   />
                 )}
                 <div className="card-body">
@@ -60,13 +73,6 @@ function Bookshelf(props) {
                     </p>
                   )}
                 </div>
-                <button
-                  type="button"
-                  className="btn btn-primary float-middle"
-                  onClick={() => props.history.push(`/Bookdetails/${book.id}`)}
-                >
-                  Book Details
-                </button>
                 <button
                   type="button"
                   className="btn btn-primary float-middle"
@@ -99,11 +105,23 @@ function Bookshelf(props) {
           bookshelf.currentlyReading.map((book, idx) => {
             return (
               <div className="card" key={idx}>
-                {book.imageLinks && (
+                {book.imageLinks ? (
                   <img
                     className="card-img-top"
                     src={book.imageLinks.thumbnail}
                     alt=""
+                    onClick={() =>
+                      props.history.push(`/Bookdetails/${book.id}`)
+                    }
+                  />
+                ) : (
+                  <img
+                    className="card-img-top"
+                    src={StockImage}
+                    alt=""
+                    onClick={() =>
+                      props.history.push(`/Bookdetails/${book.id}`)
+                    }
                   />
                 )}
                 <div className="card-body">
@@ -119,13 +137,6 @@ function Bookshelf(props) {
                     </p>
                   )}
                 </div>
-                <button
-                  type="button"
-                  className="btn btn-primary float-middle"
-                  onClick={() => props.history.push(`/Bookdetails/${book.id}`)}
-                >
-                  Book Details
-                </button>
                 <button
                   type="button"
                   className="btn btn-primary float-left"
@@ -158,11 +169,23 @@ function Bookshelf(props) {
           bookshelf.read.map((book, idx) => {
             return (
               <div className="card" key={idx}>
-                {book.imageLinks && (
+                {book.imageLinks ? (
                   <img
                     className="card-img-top"
                     src={book.imageLinks.thumbnail}
                     alt=""
+                    onClick={() =>
+                      props.history.push(`/Bookdetails/${book.id}`)
+                    }
+                  />
+                ) : (
+                  <img
+                    className="card-img-top"
+                    src={StockImage}
+                    alt=""
+                    onClick={() =>
+                      props.history.push(`/Bookdetails/${book.id}`)
+                    }
                   />
                 )}
                 <div className="card-body">
@@ -178,13 +201,6 @@ function Bookshelf(props) {
                     </p>
                   )}
                 </div>
-                <button
-                  type="button"
-                  className="btn btn-primary float-middle"
-                  onClick={() => props.history.push(`/Bookdetails/${book.id}`)}
-                >
-                  Book Details
-                </button>
                 <button
                   type="button"
                   className="btn btn-primary float-left"
