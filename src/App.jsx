@@ -7,13 +7,15 @@ import Bookdetails from "./Bookdetails";
 import CustomNavbar from "./CustomNavbar";
 
 //To do:
+//Fix bookshelf gooey menu
+//Readme file & test installation instructions
+//Clean up comments from App.jsx
+
+//Nice to have:
 //Pass search argument into prop history
-//Change bookshelf to media
+//Search results display as a grid
 //Replace gooey menu words with icons
-//Fix bookshelf logo
-//Add spinner to bookshelf & bookdetails
-//Compare to project requirements
-//Readme file & test instructions
+//Nicer font for bookshelf categories
 
 function App() {
   return (

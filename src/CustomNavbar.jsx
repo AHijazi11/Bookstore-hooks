@@ -10,7 +10,7 @@ function CustomNavbar() {
         <img
           alt=""
           src={ShelfImage}
-          width="30"
+          width="40"
           height="30"
           className="d-inline-block align-top"
         />{" "}

@@ -38,8 +38,6 @@ function Booksearch(props) {
         <br />
         <br />
         <div className="input-group input-group-sm mb-3">
-          {/* <div className="input-group-prepend" /> */}
-          {/* <div className="col-xl-4"> */}
           <input
             type="text"
             className="form-control text-center"
@@ -49,7 +47,6 @@ function Booksearch(props) {
             onChange={Search}
             placeholder="Enter Book Title or Author"
           />
-          {/* </div> */}
         </div>
       </div>
       <br />
@@ -66,8 +63,8 @@ function Booksearch(props) {
         searchresults.length > 0 &&
         searchresults.map((book, idx) => {
           return (
-            <div>
-              <div className="card" key={idx}>
+            <div key={idx}>
+              <div className="card">
                 {book.imageLinks ? (
                   <img
                     className="card-img-top"
@@ -88,7 +85,8 @@ function Booksearch(props) {
                   />
                 )}
                 <div className="card-body">
-                  <h5 className="card-title">{book.title}</h5>
+                  <h4 className="card-title">{book.title}</h4>
+                  <p>{book.authors}</p>
                 </div>
               </div>
               <br />

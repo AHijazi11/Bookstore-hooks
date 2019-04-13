@@ -1,3 +1,15 @@
 .card {
   width: 12rem;
 }
+
+.media {
+  margin-bottom: 1rem;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600");
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background: linear-gradient(#b388eb, #8093f1, #00b2ca);
+  background: #c19a6b;
+}
