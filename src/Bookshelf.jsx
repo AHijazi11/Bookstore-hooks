@@ -26,14 +26,6 @@ function Bookshelf(props) {
 
   return (
     <div>
-      <h1 className="text-center">My Bookshelf</h1>
-      <button
-        type="button"
-        className="btn btn-primary float-right"
-        onClick={() => props.history.push("/Booksearch")}
-      >
-        Click here to search{" "}
-      </button>
       {hasError && <h2>Error Retrieving Data from Server!</h2>}
       <div className="row-mb5">
         <h1>Want to Read</h1>

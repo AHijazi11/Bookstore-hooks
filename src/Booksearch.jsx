@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StockImage from "./Images/No-image-available.jpg";
+import Spinner from "./Spinner";
 
 function Booksearch(props) {
   const [searchfield, setSearchfield] = useState("");
@@ -33,24 +34,29 @@ function Booksearch(props) {
 
   return (
     <div>
-      <h1 className="text-center">Search for any book</h1>
-      <input
-        value={searchfield}
-        onChange={Search}
-        placeholder="Enter Book Title or Author"
-      />
-      <button
-        type="button"
-        className="btn btn-primary float-right"
-        onClick={() => props.history.push("/")}
-      >
-        My Bookshelf
-      </button>
+      <div className="text-center">
+        <br />
+        <br />
+        <div className="input-group input-group-sm mb-3">
+          {/* <div className="input-group-prepend" /> */}
+          {/* <div className="col-xl-4"> */}
+          <input
+            type="text"
+            className="form-control text-center"
+            aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm"
+            value={searchfield}
+            onChange={Search}
+            placeholder="Enter Book Title or Author"
+          />
+          {/* </div> */}
+        </div>
+      </div>
       <br />
       <br />
       {hasError && <h2>Error Retrieving Data from Server!</h2>}
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Spinner />
       ) : Array.isArray(searchresults) &&
         searchcomplete &&
         searchresults.length === 0 ? (

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StockImage from "./Images/No-image-available.jpg";
+import { Media } from "react-bootstrap";
+import StarRatings from "react-star-ratings";
+import { Menu, Item } from "react-gooey-nav";
 
 function Bookdetails(props) {
   const bookid = props.history.location.pathname.slice(13);
@@ -27,84 +30,90 @@ function Bookdetails(props) {
 
   return (
     <div>
-      <h1>Book Details</h1>
-      <button
-        type="button"
-        className="btn btn-primary float-right"
-        onClick={() => props.history.push("/Booksearch")}
-      >
-        Search
-      </button>
-      <button
-        type="button"
-        className="btn btn-primary float-left"
-        onClick={() => props.history.push("/")}
-      >
-        Bookshelf
-      </button>
-      <br />
-      <br />
       {hasError && <h2>Error Retrieving Data from Server!</h2>}
       {Object.keys(bookinfo).length > 0 && (
-        <div className="card">
-          {bookinfo.imageLinks ? (
-            <img
-              className="card-img-top"
-              src={bookinfo.imageLinks.thumbnail}
-              alt=""
-            />
-          ) : (
-            <img className="card-img-top" src={StockImage} alt="" />
-          )}
-          <div className="card-body">
-            <h5 className="card-title">{bookinfo.title}</h5>
+        <Media>
+          <img
+            className="mr-3"
+            src={
+              bookinfo.imageLinks ? bookinfo.imageLinks.thumbnail : StockImage
+            }
+            alt=""
+            width={180}
+            height={260}
+          />
+          <Media.Body>
+            <h5>{bookinfo.title}</h5>
             {bookinfo.authors && (
-              <p className="card-text">
+              <p>
                 <b>Author:</b> {bookinfo.authors}
               </p>
             )}
             {bookinfo.publisher && (
-              <p className="card-text">
+              <p>
                 <b>Publisher:</b> {bookinfo.publisher}
               </p>
             )}
-            {bookinfo.averageRating && (
-              <p className="card-text">
-                <b>Rating:</b> {bookinfo.averageRating}
-              </p>
-            )}
             <p>{bookinfo.description}</p>
-          </div>
-          <button
-            type="button"
-            className="btn btn-primary float-left"
-            onClick={() => AddBooktoShelf(bookid, "wantToRead")}
-          >
-            Add to Want to Read
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary float-middle"
-            onClick={() => AddBooktoShelf(bookid, "currentlyReading")}
-          >
-            Add to Currently Reading
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary float-middle"
-            onClick={() => AddBooktoShelf(bookid, "read")}
-          >
-            Add to Read
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary float-right"
-            onClick={() => AddBooktoShelf(bookid, "none")}
-          >
-            Delete from bookshelf
-          </button>
-        </div>
+            {bookinfo.averageRating && (
+              <StarRatings
+                rating={bookinfo.averageRating}
+                starDimension="25px"
+                starSpacing="5px"
+                starRatedColor="gold"
+              />
+            )}
+          </Media.Body>
+        </Media>
       )}
+      <div className="d-flex justify-content-center">
+        <Menu orientation="bottom">
+          <Item
+            title="Cool!"
+            componentProps={{
+              onClick: e => {
+                AddBooktoShelf(bookid, "wantToRead");
+                e.preventDefault();
+              }
+            }}
+          >
+            Wishlist
+          </Item>
+          <Item
+            title="Cool!"
+            componentProps={{
+              onClick: e => {
+                AddBooktoShelf(bookid, "currentlyReading");
+                e.preventDefault();
+              }
+            }}
+          >
+            Reading
+          </Item>
+          <Item
+            title="Add to read"
+            componentProps={{
+              onClick: e => {
+                AddBooktoShelf(bookid, "read");
+                e.preventDefault();
+              }
+            }}
+          >
+            Read
+          </Item>
+          <Item
+            title="Add to read"
+            componentProps={{
+              onClick: e => {
+                AddBooktoShelf(bookid, "none");
+                e.preventDefault();
+              }
+            }}
+          >
+            Delete
+          </Item>
+        </Menu>
+      </div>
     </div>
   );
 }
