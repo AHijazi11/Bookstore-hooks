@@ -57,7 +57,7 @@ function Booksearch(props) {
       ) : Array.isArray(searchresults) &&
         searchcomplete &&
         searchresults.length === 0 ? (
-        <h2>No results found</h2>
+        <h2>No matching results found :(</h2>
       ) : (
         Array.isArray(searchresults) &&
         searchresults.length > 0 &&

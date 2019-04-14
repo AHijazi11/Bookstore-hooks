@@ -7,15 +7,13 @@ import Bookdetails from "./Bookdetails";
 import CustomNavbar from "./CustomNavbar";
 
 //To do:
-//Fix bookshelf gooey menu
 //Readme file & test installation instructions
 //Clean up comments from App.jsx
 
 //Nice to have:
-//Pass search argument into prop history
 //Search results display as a grid
-//Replace gooey menu words with icons
-//Nicer font for bookshelf categories
+//Pass search argument into prop history
+//Port to react-native
 
 function App() {
   return (

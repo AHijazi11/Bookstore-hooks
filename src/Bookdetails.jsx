@@ -11,6 +11,7 @@ function Bookdetails(props) {
   const [bookinfo, setBookinfo] = useState({});
   const [isLoading, setisLoading] = useState(true);
   const [hasError, sethasError] = useState(false);
+  const [refreshcount, setRefreshcount] = useState(0);
 
   useEffect(() => {
     axios
@@ -22,12 +23,26 @@ function Bookdetails(props) {
       .catch(() => {
         sethasError(true);
       });
-  }, [bookid]);
+  }, [refreshcount]);
 
   const AddBooktoShelf = async (bookid, shelf) => {
-    await axios.get(
-      `http://localhost:7000/bookshelf/update/${bookid}/${shelf}`
-    );
+    await axios
+      .get(`http://localhost:7000/bookshelf/update/${bookid}/${shelf}`)
+      .then(data => {
+        setRefreshcount(refreshcount + 1);
+      });
+  };
+
+  const ShelfCategoryTextEditor = shelf => {
+    if (shelf === "wantToRead") {
+      return "Want to Read";
+    } else if (shelf === "currentlyReading") {
+      return "Currently Reading";
+    } else if (shelf === "read") {
+      return "Read";
+    } else if (shelf === "none") {
+      return "Not in shelf";
+    }
   };
 
   return (
@@ -51,7 +66,7 @@ function Bookdetails(props) {
               <div className="d-flex justify-content-center">
                 <Menu orientation="bottom">
                   <Item
-                    title="Cool!"
+                    title="Add to want to read"
                     componentProps={{
                       onClick: e => {
                         AddBooktoShelf(bookid, "wantToRead");
@@ -59,10 +74,10 @@ function Bookdetails(props) {
                       }
                     }}
                   >
-                    Wishlist
+                    <i className="fa fa-heart fa-lg" />
                   </Item>
                   <Item
-                    title="Cool!"
+                    title="Add to currently reading"
                     componentProps={{
                       onClick: e => {
                         AddBooktoShelf(bookid, "currentlyReading");
@@ -70,7 +85,7 @@ function Bookdetails(props) {
                       }
                     }}
                   >
-                    Reading
+                    <i className="fa fa-hourglass fa-lg" />
                   </Item>
                   <Item
                     title="Add to read"
@@ -81,10 +96,10 @@ function Bookdetails(props) {
                       }
                     }}
                   >
-                    Read
+                    <i className="fa fa-check-square fa-lg" />
                   </Item>
                   <Item
-                    title="Add to read"
+                    title="Delete"
                     componentProps={{
                       onClick: e => {
                         AddBooktoShelf(bookid, "none");
@@ -107,6 +122,10 @@ function Bookdetails(props) {
                   <b>Publisher:</b> {bookinfo.publisher}
                 </p>
               )}
+              <p>
+                <b>Shelf: </b>
+                {ShelfCategoryTextEditor(bookinfo.shelf)}
+              </p>
               {bookinfo.averageRating && (
                 <StarRatings
                   rating={bookinfo.averageRating}

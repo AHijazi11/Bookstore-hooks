@@ -10,6 +10,14 @@
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  background: linear-gradient(#b388eb, #8093f1, #00b2ca);
-  background: #c19a6b;
+  /* background: linear-gradient(#b388eb, #8093f1, #00b2ca);
+  background: #c19a6b; */
+}
+
+h1 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-weight: 800;
+  font-size: 40px;
 }

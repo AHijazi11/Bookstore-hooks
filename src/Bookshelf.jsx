@@ -3,8 +3,8 @@ import axios from "axios";
 import StockImage from "./Images/No-image-available.jpg";
 import { Media } from "react-bootstrap";
 import StarRatings from "react-star-ratings";
-import { Menu, Item } from "react-gooey-nav";
 import Spinner from "./Spinner";
+import GooeyButton from "./Gooey Button";
 
 function Bookshelf(props) {
   const [bookshelf, setBookshelf] = useState({});
@@ -56,43 +56,6 @@ function Bookshelf(props) {
                       }
                     />
                     <Media.Body>
-                      <div className="d-flex justify-content-center">
-                        <Menu orientation="bottom">
-                          <Item
-                            title="Cool!"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "currentlyReading");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            Reading
-                          </Item>
-                          <Item
-                            title="Add to read"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "read");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            Read
-                          </Item>
-                          <Item
-                            title="Add to read"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "none");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            <i className="fa fa-trash fa-lg" />
-                          </Item>
-                        </Menu>
-                      </div>
                       <h5>{book.title}</h5>
                       {book.authors && (
                         <p>
@@ -112,6 +75,11 @@ function Bookshelf(props) {
                           starRatedColor="gold"
                         />
                       )}
+                      <GooeyButton
+                        bookid={book.id}
+                        shelf={"wantToRead"}
+                        MoveBooktoShelf={MoveBooktoShelf}
+                      />
                     </Media.Body>
                   </Media>
                 );
@@ -136,43 +104,6 @@ function Bookshelf(props) {
                       }
                     />
                     <Media.Body>
-                      <div className="d-flex justify-content-center">
-                        <Menu orientation="bottom">
-                          <Item
-                            title="Cool!"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "wantToRead");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            Wishlist
-                          </Item>
-                          <Item
-                            title="Add to read"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "read");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            Read
-                          </Item>
-                          <Item
-                            title="Add to read"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "none");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            <i className="fa fa-trash fa-lg" />
-                          </Item>
-                        </Menu>
-                      </div>
                       <h5>{book.title}</h5>
                       {book.authors && (
                         <p>
@@ -192,6 +123,11 @@ function Bookshelf(props) {
                           starRatedColor="gold"
                         />
                       )}
+                      <GooeyButton
+                        bookid={book.id}
+                        shelf={"currentlyReading"}
+                        MoveBooktoShelf={MoveBooktoShelf}
+                      />
                     </Media.Body>
                   </Media>
                 );
@@ -216,43 +152,6 @@ function Bookshelf(props) {
                       }
                     />
                     <Media.Body>
-                      <div className="d-flex justify-content-center">
-                        <Menu orientation="bottom">
-                          <Item
-                            title="Cool!"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "wantToRead");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            Wishlist
-                          </Item>
-                          <Item
-                            title="Cool!"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "currentlyReading");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            Reading
-                          </Item>
-                          <Item
-                            title="Add to read"
-                            componentProps={{
-                              onClick: e => {
-                                MoveBooktoShelf(book.id, "none");
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            <i className="fa fa-trash fa-lg" />
-                          </Item>
-                        </Menu>
-                      </div>
                       <h5>{book.title}</h5>
                       {book.authors && (
                         <p>
@@ -272,6 +171,11 @@ function Bookshelf(props) {
                           starRatedColor="gold"
                         />
                       )}
+                      <GooeyButton
+                        bookid={book.id}
+                        shelf={"read"}
+                        MoveBooktoShelf={MoveBooktoShelf}
+                      />
                     </Media.Body>
                   </Media>
                 );
