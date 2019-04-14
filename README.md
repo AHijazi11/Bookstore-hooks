@@ -21,7 +21,18 @@ From the terminal, clone the repository by typing:
 git clone https://github.com/AHijazi11/Bookstore-hooks.git
 ```
 
-Then cd into the retro-board directory and run `yarn install` followed by `yarn start`
+### Server:
+
+cd into the Bookstore-hooks/server directory and run `yarn install` followed by `yarn start`
+
+When the server starts and is working, you should see this message appear in the command line:
+
+Your server is running on http://localhost:7000/ <br>
+Press ctrl+c to stop
+
+### Project:
+
+cd into the Bookstore-hooks directory and run `yarn install` followed by `yarn start`
 
 ## Versioning
 
