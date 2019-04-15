@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StockImage from "./Images/No-image-available.jpg";
 import Spinner from "./Spinner";
+// import { ResultCard } from "@appbaseio/reactivesearch";
 
 function Booksearch(props) {
   const [searchfield, setSearchfield] = useState("");
@@ -10,9 +11,30 @@ function Booksearch(props) {
   const [isLoading, setisLoading] = useState(false);
   const [hasError, sethasError] = useState(false);
 
+  const searchhistory = props.history.location.pathname.slice(12);
+
   const Search = e => {
     setSearchfield(e.target.value);
+    props.history.push(`/Booksearch/${e.target.value}`);
   };
+
+  useEffect(() => {
+    if (searchhistory) {
+      setisLoading(true);
+      sethasError(false);
+      axios
+        .get(`http://localhost:7000/books/search/${searchhistory}`)
+        .then(data => {
+          setSearchresults(data.data.books);
+          setisLoading(false);
+          setSearchcomplete(true);
+        })
+        .catch(() => {
+          sethasError(true);
+          setisLoading(false);
+        });
+    }
+  }, [searchhistory]);
 
   useEffect(() => {
     if (searchfield) {
@@ -52,6 +74,38 @@ function Booksearch(props) {
       <br />
       <br />
       {hasError && <h2>Error Retrieving Data from Server!</h2>}
+      {/* <ResultCard
+        componentId="ResultCard01"
+        dataField="ratings"
+        stream={true}
+        sortBy="desc"
+        size={8}
+        pagination={false}
+        showResultStats={true}
+        loader="Loading Results.."
+        react={{
+          and: ["PriceFilter", "SearchFilter"]
+        }}
+        onData={() => {
+          searchresults.map((book, idx) => {
+            return {
+              image: book.imageLinks.thumbnail,
+              title: book.title,
+              // description: (
+              //     <div>
+              //         <div className="price">${res.price}</div>
+              //         <p>{res.room_type} · {res.accommodates} guests</p>
+              //     </div>
+              // ),
+              // url: res.listing_url,
+              containerProps: {
+                onMouseEnter: () => console.log("😁"),
+                onMouseLeave: () => console.log("🙀")
+              }
+            };
+          });
+        }}
+      /> */}
       {isLoading ? (
         <Spinner />
       ) : Array.isArray(searchresults) &&

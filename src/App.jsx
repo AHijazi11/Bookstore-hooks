@@ -12,8 +12,8 @@ function App() {
       <CustomNavbar />
       <Router>
         <Route exact path="/" component={Bookshelf} />
-        <Route exact path="/Booksearch" component={Booksearch} />
-        <Route path="/Bookdetails/:bookid" component={Bookdetails} />
+        <Route path="/Booksearch" component={Booksearch} />
+        <Route path="/Bookdetails/" component={Bookdetails} />
       </Router>
     </div>
   );

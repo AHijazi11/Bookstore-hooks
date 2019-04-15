@@ -10,7 +10,7 @@ function GooeyButton(props) {
 
   return (
     <>
-      <div className="container">
+      <div>
         <div className="button" onClick={ToggleClass}>
           <i className="fa fa-bars fa-1x" />
         </div>
