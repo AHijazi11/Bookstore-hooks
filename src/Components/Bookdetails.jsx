@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import StockImage from "./Images/No-image-available.jpg";
+import StockImage from "../Images/No-image-available.jpg";
 import { Media } from "react-bootstrap";
 import StarRatings from "react-star-ratings";
 import { Menu, Item } from "react-gooey-nav";

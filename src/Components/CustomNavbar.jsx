@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
-import ShelfImage from "./Images/bookshelf-us-.jpg";
+import "../App.css";
+import ShelfImage from "../Images/bookshelf-us-.jpg";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
 function CustomNavbar() {

@@ -1,17 +1,35 @@
 .card {
   width: 12rem;
+  height: 30rem;
+  margin-right: 4px;
+  margin-left: 4px;
+  background-image: linear-gradient(
+    141deg,
+    #9fb8ad 0%,
+    #1fc8db 51%,
+    #2cb5e8 75%
+  );
+}
+.card:hover .card-img-top {
+  opacity: 0.3;
+}
+
+.card:hover .book-info {
+  opacity: 1;
 }
 
 .media {
   margin-bottom: 1rem;
 }
 
+.media:hover .hover-effect {
+  opacity: 0.3;
+}
+
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600");
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  /* background: linear-gradient(#b388eb, #8093f1, #00b2ca);
-  background: #c19a6b; */
 }
 
 h1 {
@@ -20,4 +38,9 @@ h1 {
   font-variant: small-caps;
   font-weight: 800;
   font-size: 40px;
+}
+
+.bottom-border {
+  border-bottom: 10px solid #ddd;
+  border-bottom-style: double;
 }

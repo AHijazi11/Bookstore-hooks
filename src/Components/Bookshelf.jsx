@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import StockImage from "./Images/No-image-available.jpg";
+import StockImage from "../Images/No-image-available.jpg";
 import { Media } from "react-bootstrap";
 import StarRatings from "react-star-ratings";
 import Spinner from "./Spinner";
-import GooeyButton from "./Gooey Button";
+import CustomButton from "./CustomButton/Custom Button";
 
 function Bookshelf(props) {
   const [bookshelf, setBookshelf] = useState({});
@@ -37,14 +37,14 @@ function Bookshelf(props) {
         <Spinner />
       ) : (
         <div>
-          <div className="row-mb5">
+          <div className="row-mb5 bottom-border">
             <h1>Want to Read</h1>
             {Object.keys(bookshelf).length > 0 &&
               bookshelf.wantToRead.map((book, idx) => {
                 return (
                   <Media key={idx}>
                     <img
-                      className="mr-3"
+                      className="mr-3 hover-effect"
                       src={
                         book.imageLinks ? book.imageLinks.thumbnail : StockImage
                       }
@@ -75,7 +75,7 @@ function Bookshelf(props) {
                           starRatedColor="gold"
                         />
                       )}
-                      <GooeyButton
+                      <CustomButton
                         bookid={book.id}
                         shelf={"wantToRead"}
                         MoveBooktoShelf={MoveBooktoShelf}
@@ -85,14 +85,14 @@ function Bookshelf(props) {
                 );
               })}
           </div>
-          <div className="row-mb5">
+          <div className="row-mb5 bottom-border">
             <h1>Currently Reading</h1>
             {Object.keys(bookshelf).length > 0 &&
               bookshelf.currentlyReading.map((book, idx) => {
                 return (
                   <Media key={idx}>
                     <img
-                      className="mr-3"
+                      className="mr-3 hover-effect"
                       src={
                         book.imageLinks ? book.imageLinks.thumbnail : StockImage
                       }
@@ -123,7 +123,7 @@ function Bookshelf(props) {
                           starRatedColor="gold"
                         />
                       )}
-                      <GooeyButton
+                      <CustomButton
                         bookid={book.id}
                         shelf={"currentlyReading"}
                         MoveBooktoShelf={MoveBooktoShelf}
@@ -140,7 +140,7 @@ function Bookshelf(props) {
                 return (
                   <Media key={idx}>
                     <img
-                      className="mr-3"
+                      className="mr-3 hover-effect"
                       src={
                         book.imageLinks ? book.imageLinks.thumbnail : StockImage
                       }
@@ -171,7 +171,7 @@ function Bookshelf(props) {
                           starRatedColor="gold"
                         />
                       )}
-                      <GooeyButton
+                      <CustomButton
                         bookid={book.id}
                         shelf={"read"}
                         MoveBooktoShelf={MoveBooktoShelf}
