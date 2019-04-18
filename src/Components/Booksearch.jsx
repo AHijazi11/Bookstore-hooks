@@ -56,21 +56,21 @@ function Booksearch(props) {
 
   return (
     <div>
-      <div className="text-center">
-        <br />
-        <br />
-        <div className="input-group input-group-sm mb-3">
-          <input
-            type="text"
-            className="form-control text-center"
-            aria-label="Small"
-            aria-describedby="inputGroup-sizing-sm"
-            value={searchfield}
-            onChange={Search}
-            placeholder="Enter Book Title or Author"
-          />
-        </div>
+      {/* <div className="text-center"> */}
+      <br />
+      <br />
+      <div className="input-group input-group-sm mb-3 stickysearchbar">
+        <input
+          type="text"
+          className="form-control text-center"
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+          value={searchfield}
+          onChange={Search}
+          placeholder="Enter Book Title or Author"
+        />
       </div>
+      {/* </div> */}
       <br />
       <br />
       {hasError && <h2>Error Retrieving Data from Server!</h2>}
