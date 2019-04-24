@@ -56,7 +56,6 @@ function Booksearch(props) {
 
   return (
     <div>
-      {/* <div className="text-center"> */}
       <br />
       <br />
       <div className="input-group input-group-sm mb-3 stickysearchbar">
@@ -70,7 +69,6 @@ function Booksearch(props) {
           placeholder="Enter Book Title or Author"
         />
       </div>
-      {/* </div> */}
       <br />
       <br />
       {hasError && <h2>Error Retrieving Data from Server!</h2>}
